@@ -18,4 +18,8 @@ autogen_agent/
 │   ├── config.yaml           # 주요 설정 (LLM, MCP 서버 정보 등)
 │   └── llm_config.yaml       # (옵션) LLM별 세부 설정 분리 가능
 └── requirements.txt      # 의존성 패키지 목록
-# autogen-agent
+
+python cli/cli_app.py --question "대한민국 수도는?"
+
+python ui/web_app.py
+streamlit run ui/web_app.py

@@ -1,0 +1,44 @@
+# config.yaml - 에이전트 시스템 설정 예시
+
+# llm:
+#   provider: "openai"               # LLM 제공자 ("openai" 또는 "azure" 등)
+#   model: "gpt-3.5-turbo"           # 사용할 모델 이름
+#   api_key: "OPENAI_API_KEY_여기에"  # OpenAI API 키 (보안을 위해 실제 키는 환경변수로 처리 권장)
+llm:
+  provider: "openai"  # LM Studio는 OpenAI API 호환
+  model: "gpt-4-turbo"
+  api_key: "lm-studio"  # LM Studio는 API Key 없이 사용 가능
+  base_url: "http://192.168.0.23:2345/v1"
+
+#mcp:
+#  # SSE 예시 설정:
+#  protocol: "sse"
+#  url: "https://api.example.com/mcp"
+#  headers:
+#    Authorization: "Bearer YOUR_MCP_API_TOKEN"
+#  timeout: 10
+#  sse_read_timeout: 300
+
+mcp:
+  # # STDIO 예시 설정 (Docker로 MCP 서버 실행)
+  # protocol: "stdio"
+  # command: "docker"         # MCP 서버를 실행할 명령어 (ex: docker, uvicorn 등)
+  # args:
+  #   - run
+  #   - "-i"
+  #   - "--rm"
+  #   - "-e"
+  #   - "GITHUB_TOKEN"
+  #   - "ghcr.io/github/github-mcp-server"
+  # env:
+  #   GITHUB_TOKEN: "ghp_xxx...xxx"   # MCP 서버(예: GitHub MCP)의 인증 토큰 환경변수
+  # STDIO 예시 설정 (Docker로 MCP 서버 실행)
+  protocol: "stdio"
+  command: "C:\\Users\\lauru\\PythonProjects\\AutoGen_MCP\\mcp-resource-monitor\\venv\\Scripts\\python.exe"       # MCP 서버를 실행할 명령어 (ex: docker, uvicorn 등)
+  args:
+    - "C:\\Users\\lauru\\PythonProjects\\AutoGen_MCP\\mcp-resource-monitor\\app\\main.py"
+  env:
+
+system_message: |
+  당신은 오케스트레이터 에이전트입니다. 제공된 도구를 사용하여 사용자의 요청을 해결하세요.
+  필요하면 Tool을 호출해 정보를 얻고, 최종 답변을 한국어로 제공합니다.
